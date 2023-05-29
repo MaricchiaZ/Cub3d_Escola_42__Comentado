@@ -1,0 +1,15 @@
+NO ./imgs/ea_redbrick.xpm
+SO ./imgs/we_redbrick.xpm
+WE ./imgs/so_redbrick.xpm
+EA ./imgs/no_redbrick.xpm
+F 122,122,122
+C 255,200,160
+
+11111111
+10000001
+10S00001
+10001001
+10000001
+10000101
+10001001
+11111111
