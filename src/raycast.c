@@ -6,17 +6,19 @@
 /*   By: maclara- <maclara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:44:53 by maclara-          #+#    #+#             */
-/*   Updated: 2023/05/19 20:12:29 by maclara-         ###   ########.fr       */
+/*   Updated: 2023/05/30 20:01:10 by maclara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+//Esta função calcula as distâncias e as diferenças laterais para as paredes mais
+//  próximas em relação à posição atual do jogador.
 static void	get_distance_near_square(t_data *data)
 {
-	if (data->rc->ray_dir.x < 0)
+	if (data->rc->ray_dir.x < 0) // se o raio apontar para a esquerda
 	{
-		data->rc->dist_wall_x = -1;
+		data->rc->dist_wall_x = -1; // indica que a parede mais próxima está a esquerda
 		data->rc->side_dist_x = (data->player.x - data->rc->pos_map.x) * \
 		data->rc->delta_dist_x;
 	}
