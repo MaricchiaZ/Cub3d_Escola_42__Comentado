@@ -6,7 +6,21 @@
 /*   By: maclara- <maclara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 12:26:46 by gissao-m          #+#    #+#             */
-/*   Updated: 2023/05/30 19:23:35 by maclara-         ###   ########.fr       */
+/*   Updated: 2023/05/30 20:30:42 by maclara-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*   By: gissao-m <gissao-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 12:26:46 by gissao-m          #+#    #+#             */
+/*   Updated: 2023/05/30 20:25:19 by gissao-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*   By: gissao-m <gissao-m@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/17 12:26:46 by gissao-m          #+#    #+#             */
+/*   Updated: 2023/05/30 20:10:37 by gissao-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,45 +54,49 @@ void	init_struct(t_data *data, char **argv)
 }
 
 void	init_images(t_data *data)
+//função responsável por iniciar as imagens do jogo.
 {
 	data->paint_img.img_ptr = mlx_new_image(data->mlx->mlx, \
-	SCREEN_WIDTH, SCREEN_HEIGHT);
+	SCREEN_WIDTH, SCREEN_HEIGHT);//faço a minha struct responsável pela pintura receber essa função da mlx que é responsável por criar as imagens com a altura e largura já pré-estabelecidas.
 	data->paint_img.addr = mlx_get_data_addr(data->paint_img.img_ptr, \
-	&data->paint_img.bpp, &data->paint_img.size_line, &data->paint_img.endian);
-	data->init_image = 1;
+	&data->paint_img.bpp, &data->paint_img.size_line, &data->paint_img.endian);//essa função da mlx é usada para obter informações sobre a imagem recém-criada. Ela retorna um ponteiro para os dados da imagem (data->paint_img.addr), além de preencher outros campos da estrutura data->paint_img, como o número de bits por pixel (data->paint_img.bpp), o tamanho de cada linha da imagem (data->paint_img.size_line) e a ordem dos bytes nos pixels (data->paint_img.endian).
+	data->init_image = 1;//minha variável init_image recebe o valor de 1 indicando que tudo foi inicializado com sucesso.
 }
 
 void	kill_window(t_data *data)
+//função responsável por destruir as janelas e limpar tudo relacionado à mlx.
 {
-	mlx_clear_window(data->mlx->mlx, data->mlx->window);
-	mlx_loop_end(data->mlx->mlx);
-	mlx_destroy_window(data->mlx->mlx, data->mlx->window);
-	mlx_destroy_display(data->mlx->mlx);
-	free(data->mlx->mlx);
+	mlx_clear_window(data->mlx->mlx, data->mlx->window);//função responsável por limpar a janela criada.
+	mlx_loop_end(data->mlx->mlx);//função responsável por stopar o loop infinito, que é utilizada para manter a janela funcionando.
+	mlx_destroy_window(data->mlx->mlx, data->mlx->window);//função responsável por destruir a janela e assim limpar o conteúdo da variável void *window
+	mlx_destroy_display(data->mlx->mlx);//é usada para encerrar corretamente a exibição gráfica do jogo e liberar os recursos associados a ela
+	free(data->mlx->mlx);// limpo o void *mlx.
 }
 
 void	free_game(t_data *data)
+//função responsável por liberar toda as alocações feitas durante o projeto.
 {
-	if (data->map->map)
-		free_matrix(data->map->map);
-	if (data->map->b_map)
-		free_matrix(data->map->b_map);
-	if (data->map != NULL)
-		free(data->map);
-	free_tex(data);
-	if (data->btn)
-		free(data->btn);
-	if (data->init_image)
-		mlx_destroy_image(data->mlx->mlx, data->paint_img.img_ptr);
-	if (data->mlx->mlx != NULL && data->mlx->window != NULL)
-		kill_window(data);
-	free(data->mlx);
-	free(data->rc);
-	exit(0);
+	if (data->map->map)//se a variavel map existir.
+		free_matrix(data->map->map);//limpo a matriz
+	if (data->map->b_map)//se a variavel backup map existir.
+		free_matrix(data->map->b_map);//limpo a matriz
+	if (data->map != NULL)//se a struct map não estiver vazia.
+		free(data->map);//limpo a struct.
+	free_tex(data);//função responsável por limpar as texturas.
+	if (data->btn)//se a struct buttons não estiver vazia.
+		free(data->btn);//limpo a struct.
+	if (data->init_image)//se a init_image existir.
+		mlx_destroy_image(data->mlx->mlx, data->paint_img.img_ptr);//uso uma função da mlx para destruir as imagens.
+	if (data->mlx->mlx != NULL && data->mlx->window != NULL)//se mlx e window existirem.
+		kill_window(data);//entro nesta função para destruir a mlx e a window.
+	free(data->mlx);//limpo a struct mlx.
+	free(data->rc);//limpo a struct raycast.
+	exit(0);//finalizo o meu programa.
 }
 
 int	kill_game(t_data *data)
+//função criada, pois era necessário ser uma função int numa das funções da mlx.
 {
-	free_game(data);
-	return (1);
+	free_game(data);//limpo tudo do meu programa.
+	return (1);//retorno 1.
 }

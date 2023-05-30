@@ -6,11 +6,11 @@
 /*   By: maclara- <maclara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:05:53 by gissao-m          #+#    #+#             */
-/*   Updated: 2023/05/30 20:01:07 by maclara-         ###   ########.fr       */
+/*   Updated: 2023/05/30 20:06:20 by maclara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-606gissomgissom54gissom/*   By: gissao-m <gissao-m@student.42sp.org.br>    +#+  +:+       +#+        */
+gissomgissom44gissom606gissomgissom54gissom/*   By: gissao-m <gissao-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:05:53 by gissao-m          #+#    #+#             */
 /*   Updated: 2023/05/30 19:29:53 by gissao-m         ###   ########.fr       */
@@ -19,15 +19,15 @@
 
 gissomgissom30gissom#include "cub3d.h"
 
-static char	**make_map(char *map, int ck_line)
+static char	**make_map(char *map, int ck_line)//função responsável por fazer a string que contém o mapa virar uma matriz.
 {
-	char	**temp;
+	char	**temp;//crio uma variável temporária, na qual retornará o mapa em matriz.
 
-	temp = NULL;
-	if (ck_line >= 3)
-		temp = ft_split(map, '\n');
-	free(map);
-	return (temp);
+	temp = NULL;//atribuo o valor de NULL à ela.
+	if (ck_line >= 3)//essa condição serve para verificar se a variável ck_line for maior ou igual a 3. Quer dizer que o mapa foi lido com sucesso e caso ele foi lido com sucesso
+		temp = ft_split(map, '\n');// utiliza-se a função split para transformar a string map em matriz dividindo sempre nas quebras de linha.
+	free(map);//limpo a minha variável do tipo string map.
+	return (temp);//retorno o meu mapa em formato de matriz.
 }
 
 static void	free_read_maps(char **aux, char *gnl_line)
