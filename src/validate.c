@@ -6,11 +6,11 @@
 /*   By: maclara- <maclara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 15:11:54 by gissao-m          #+#    #+#             */
-/*   Updated: 2023/05/30 18:51:51 by maclara-         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:16:36 by maclara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-gissomgissom14gissom#include "cub3d.h"
+#include "cub3d.h"
 
 void	validate_args(int argc, char **argv)
 //Esta função verificará se os argumentos passados estão corretos

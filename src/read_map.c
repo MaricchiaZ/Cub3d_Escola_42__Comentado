@@ -6,18 +6,11 @@
 /*   By: maclara- <maclara-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 12:05:53 by gissao-m          #+#    #+#             */
-/*   Updated: 2023/05/30 20:06:20 by maclara-         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:16:31 by maclara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-gissomgissom44gissom606gissomgissom54gissom/*   By: gissao-m <gissao-m@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/30 12:05:53 by gissao-m          #+#    #+#             */
-/*   Updated: 2023/05/30 19:29:53 by gissao-m         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-gissomgissom30gissom#include "cub3d.h"
+#include "cub3d.h"
 
 static char	**make_map(char *map, int ck_line)//função responsável por fazer a string que contém o mapa virar uma matriz.
 {
